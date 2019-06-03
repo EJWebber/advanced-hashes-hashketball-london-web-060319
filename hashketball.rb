@@ -26,12 +26,21 @@ def game_hash
   }
 end
 
+# num_points_scored
 def num_points_scored(name)
   players = game_hash[:home][:players].merge(game_hash[:away][:players])
 player = players.fetch(name)
 player.fetch(:points)
 end
+ #OR
+def num_points_scored(name)
+  game_hash.each do |player_name, data|
+    if player_name == name
+      return data[:points]
+end
+end
 
+# shoe_size
 def shoe_size(name)
   players = game_hash[:home][:players].merge(game_hash[:away][:players])
 player = players.fetch(name)
